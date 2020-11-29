@@ -1,0 +1,4 @@
+from python:3.6
+
+copy zz-requirements.txt /tmp/requirements.txt
+run python -m pip install -r /tmp/requirements.txt
