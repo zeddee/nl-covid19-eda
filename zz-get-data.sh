@@ -8,7 +8,7 @@ function replacedate () {
     if [[ $OSTYPE == *"darwin"* ]]; then
         sed -i .bak "13,54s/$YEST/$DATENOW/g" nl-covid-eda.ipynb
     else
-        sed --in-place="bak" "13,54s/$YEST/$DATENOW/g" nl-covid-eda.ipynb
+        sed --in-place="bak" "13,70s/$YEST/$DATENOW/g" nl-covid-eda.ipynb
     fi
 }
 
