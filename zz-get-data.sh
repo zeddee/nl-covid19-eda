@@ -1,7 +1,8 @@
 DATENOW=$(date +%Y-%m-%d)
-YEST=$(date --date="yesterday" +%Y-%m-%d)
 if [[ $OSTYPE == *"darwin"* ]]; then
   YEST=$(date -v-1d +%Y-%m-%d) # macos
+elif [[ $OSTYPE == *"linux"* ]]; then
+  YEST=$(date --date="yesterday" +%Y-%m-%d)
 fi
 
 function replacedate () {
