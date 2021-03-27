@@ -1,15 +1,19 @@
 DATENOW=$(date +%Y-%m-%d)
-if [[ $OSTYPE == *"darwin"* ]]; then
-  YEST=$(date -v-1d +%Y-%m-%d) # macos
-elif [[ $OSTYPE == *"linux"* ]]; then
-  YEST=$(date --date="yesterday" +%Y-%m-%d)
-fi
+
+# Set YEST to use a regex pattern matching YYYY-MM-DD instead
+YEST="\d{4}-\d{2}-\d{2}"
+
+#if [[ $OSTYPE == *"darwin"* ]]; then
+#  YEST=$(date -v-1d +%Y-%m-%d) # macos
+#elif [[ $OSTYPE == *"linux"* ]]; then
+#  YEST=$(date --date="yesterday" +%Y-%m-%d)
+#fi
 
 function replacedate () {
     if [[ $OSTYPE == *"darwin"* ]]; then
-        sed -i .bak "13,70s/$YEST/$DATENOW/g" nl-covid-eda.ipynb
+        sed -E -i .bak "13,70s/\d{4}-\d{2}-\d{2}/$DATENOW/g" nl-covid-eda.ipynb
     else
-        sed --in-place="bak" "13,70s/$YEST/$DATENOW/g" nl-covid-eda.ipynb
+        sed -E --in-place="bak" "13,70s/\d{4}-\d{2}-\d{2}/$DATENOW/g" nl-covid-eda.ipynb
     fi
 }
 
