@@ -1,7 +1,11 @@
 DATENOW=$(date +%Y-%m-%d)
 
 # Set YEST to use a regex pattern matching YYYY-MM-DD instead
-YEST="\d{4}-\d{2}-\d{2}"
+# Eh. this doesn't work for some reason.
+# sed doesn't work with this regexp, even with -E
+# YEST="\d{4}-\d{2}-\d{2}"
+# revert to old YEST
+YEST=$(date -v-1d +%Y-%m-%d)
 
 #if [[ $OSTYPE == *"darwin"* ]]; then
 #  YEST=$(date -v-1d +%Y-%m-%d) # macos
