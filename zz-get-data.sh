@@ -15,9 +15,9 @@ YEST=$(date -v-1d +%Y-%m-%d)
 
 function replacedate () {
     if [[ $OSTYPE == *"darwin"* ]]; then
-        sed -E -i .bak "13,70s/\d{4}-\d{2}-\d{2}/$DATENOW/g" nl-covid-eda.ipynb
+        sed -E -i .bak "13,70s/$YEST/$DATENOW/g" nl-covid-eda.ipynb
     else
-        sed -E --in-place="bak" "13,70s/\d{4}-\d{2}-\d{2}/$DATENOW/g" nl-covid-eda.ipynb
+        sed -E --in-place="bak" "13,70s/$YEST/$DATENOW/g" nl-covid-eda.ipynb
     fi
 }
 
